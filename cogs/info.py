@@ -176,18 +176,34 @@ class Info(commands.Cog):
 	@commands.guild_only()
 	async def user(self, ctx, member:discord.Member=None):
 		if member is None:
+			if ctx.author.status == discord.Status.online:
+				status = 'В сети'
+			if ctx.author.status == discord.Status.idle:
+				status = 'Неактивен'
+			if ctx.author.status == discord.Status.dnd:
+				status = 'Не беспокоить'
+			if ctx.author.status == discord.Status.offline:
+				status = 'Не в сети'
 			emb = discord.Embed( title = f'Информация о {ctx.author.name}', color = config.MAIN_COLOR )
 			emb.add_field( name = 'Имя пользователя:', value = f'{ctx.author.name}#{ctx.author.discriminator}', inline = False )
 			emb.add_field( name = 'ID:', value = f'{ctx.author.id}', inline = False )
-			emb.add_field( name = 'Статус:', value = f'{ctx.author.status}', inline = False )
+			emb.add_field( name = 'Статус:', value = status, inline = False )
 			emb.set_thumbnail( url = ctx.author.avatar_url )
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 			await ctx.send( embed = emb )
 		else:
+			if member.status == discord.Status.online:
+				status = 'В сети'
+			if member.status == discord.Status.idle:
+				status = 'Неактивен'
+			if member.status == discord.Status.dnd:
+				status = 'Не беспокоить'
+			if member.status == discord.Status.offline:
+				status = 'Не в сети'
 			emb = discord.Embed( title = f'Информация о {member.name}', color = config.MAIN_COLOR )
 			emb.add_field( name = 'Имя пользователя:', value = f'{member.name}#{member.discriminator}', inline = False )
 			emb.add_field( name = 'ID:', value = f'{member.id}', inline = False )
-			emb.add_field( name = 'Статус:', value = f'{member.status}', inline = False )
+			emb.add_field( name = 'Статус:', value = status, inline = False )
 			emb.set_thumbnail( url = member.avatar_url )
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 			await ctx.send( embed = emb )
