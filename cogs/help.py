@@ -12,7 +12,7 @@ class Help(commands.Cog):
 	@commands.group()
 	async def help(self, ctx):
 		if ctx.invoked_subcommand == None:
-			emb = discord.Embed( title = 'Команды', description = f'Для просмотра команд введите {config.PREFIX}help', color = config.MAIN_COLOR )
+			emb = discord.Embed( title = 'Команды', description = f'Для просмотра команд введите `{config.PREFIX}help [название модуля]`', color = config.MAIN_COLOR )
 			emb.add_field( name = f'{config.PREFIX}help info', value = 'Информационные команды', inline = False )
 			emb.add_field( name = f'{config.PREFIX}help moderation', value = 'Команды модерации', inline = False )
 			emb.add_field( name = f'{config.PREFIX}help settings', value = 'Настройки сервера', inline = False )
@@ -33,7 +33,7 @@ class Help(commands.Cog):
 		emb.add_field( name = f'{config.PREFIX}ping', value = 'Узнать пинг бота', inline = False )
 		emb.add_field( name = f'{config.PREFIX}stats', value = 'Узнать статистику бота', inline = False )
 		emb.add_field( name = f'{config.PREFIX}hosting', value = 'Узнать информацию о хостинге', inline = False )
-		emb.add_field( name = f'{config.PREFIX}user', value = 'Узнать информацию о пользователе', inline = False )
+		emb.add_field( name = f'{config.PREFIX}user <пинг пользователя>', value = 'Узнать информацию о пользователе', inline = False )
 		emb.add_field( name = f'{config.PREFIX}server', value = 'Узнать ниформацию о сервере', inline = False )
 		emb.set_thumbnail( url = self.client.user.avatar_url )
 		emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
