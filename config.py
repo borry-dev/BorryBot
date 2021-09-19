@@ -4,7 +4,7 @@ TOKEN = secret.TOKEN
 
 SDC_TOKEN = secret.SDC_TOKEN
 
-PREFIX = '-'
+PREFIX = 'b!'
 
 SCOPE = 8
 
