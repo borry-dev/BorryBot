@@ -174,14 +174,23 @@ class Info(commands.Cog):
 
 	@commands.command()
 	@commands.guild_only()
-	async def user(self, ctx):
-		emb = discord.Embed( title = f'Информация о {ctx.author.name}', color = config.MAIN_COLOR )
-		emb.add_field( name = 'Имя пользователя:', value = f'{ctx.author.name}#{ctx.author.discriminator}', inline = False )
-		emb.add_field( name = 'ID:', value = f'{ctx.author.id}', inline = False )
-		emb.add_field( name = 'Статус:', value = f'{ctx.author.status}', inline = False )
-		emb.set_thumbnail( url = ctx.author.avatar_url )
-		emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
-		await ctx.send( embed = emb )
+	async def user(self, ctx, member:discord.Member=None):
+		if member is None:
+			emb = discord.Embed( title = f'Информация о {ctx.author.name}', color = config.MAIN_COLOR )
+			emb.add_field( name = 'Имя пользователя:', value = f'{ctx.author.name}#{ctx.author.discriminator}', inline = False )
+			emb.add_field( name = 'ID:', value = f'{ctx.author.id}', inline = False )
+			emb.add_field( name = 'Статус:', value = f'{ctx.author.status}', inline = False )
+			emb.set_thumbnail( url = ctx.author.avatar_url )
+			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
+			await ctx.send( embed = emb )
+		else:
+			emb = discord.Embed( title = f'Информация о {member.name}', color = config.MAIN_COLOR )
+			emb.add_field( name = 'Имя пользователя:', value = f'{member.name}#{member.discriminator}', inline = False )
+			emb.add_field( name = 'ID:', value = f'{member.id}', inline = False )
+			emb.add_field( name = 'Статус:', value = f'{member.status}', inline = False )
+			emb.set_thumbnail( url = member.avatar_url )
+			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
+			await ctx.send( embed = emb )
 
 
 	#Server
