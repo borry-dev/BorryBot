@@ -14,7 +14,7 @@ class Errors(commands.Cog):
 	@commands.Cog.listener()
 	async def on_command_error(self, ctx, err):
 		if isinstance(err, errors.CommandNotFound):
-			embed = discord.Embed( title = '-', description = '-', color = config.MAIN_COLOR )
+			pass
 		elif isinstance(err, errors.NoPrivateMessage):
 			pass
 		elif isinstance(err, errors.MissingPermissions):
@@ -23,6 +23,10 @@ class Errors(commands.Cog):
 			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Использование данной команды разрешено только в NSFW каналах!", color = config.ERR_COLOR) )
 		elif isinstance(err, commands.CommandOnCooldown):
 			await ctx.send( embed = discord.Embed( title = "У вас кулдаун!", description = f"У вас не прошёл кулдаун! Попробуйте позже!", color = config.ERR_COLOR) )
+		elif isinstance(err, commands.errors.MemberNotFound):
+			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Пользователь не найден!", color = config.ERR_COLOR ) )
+		elif isinstance(err, commands.errors.MissingRequiredArgument):
+			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Вы не указали аргумент!", color = config.ERR_COLOR ) )
 		else:
 			channel = self.client.get_channel(config.ERR_CHANNEL)
 			await ctx.send( embed = discord.Embed( title = "Неизвестная ошибка!", description = f"Произошла неизвестная ошибка: `{err}`\nОшибка уже отправлена разработчику для её исправления", color= config.ERR_COLOR) )
