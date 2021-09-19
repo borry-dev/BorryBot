@@ -18,15 +18,25 @@ class Errors(commands.Cog):
 		elif isinstance(err, errors.NoPrivateMessage):
 			pass
 		elif isinstance(err, errors.MissingPermissions):
-			await ctx.send( embed = discord.Embed( title = "Недостаточно прав!", description = f"У вас недостаточно прав для запуска этой команды!", color= config.ERR_COLOR) )
+			emb = discord.Embed( title = "Недостаточно прав!", description = f"У вас недостаточно прав для запуска этой команды!", color= config.ERR_COLOR)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send( embed = emb )
 		elif isinstance(err, commands.errors.NSFWChannelRequired):
-			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Использование данной команды разрешено только в NSFW каналах!", color = config.ERR_COLOR) )
+			emb = discord.Embed( title = "Ошибка!", description = f"Использование данной команды разрешено только в NSFW каналах!", color = config.ERR_COLOR)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send( embed = emb )
 		elif isinstance(err, commands.CommandOnCooldown):
-			await ctx.send( embed = discord.Embed( title = "У вас кулдаун!", description = f"У вас не прошёл кулдаун! Попробуйте позже!", color = config.ERR_COLOR) )
+			emb = discord.Embed( title = "У вас кулдаун!", description = f"У вас не прошёл кулдаун! Попробуйте позже!", color = config.ERR_COLOR)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send( embed = emb )
 		elif isinstance(err, commands.errors.MemberNotFound):
-			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Пользователь не найден!", color = config.ERR_COLOR ) )
+			emb = discord.Embed( title = "Ошибка!", description = f"Пользователь не найден!", color = config.ERR_COLOR )
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send( embed = emb )
 		elif isinstance(err, commands.errors.MissingRequiredArgument):
-			await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Вы не указали аргумент!", color = config.ERR_COLOR ) )
+			emb = discord.Embed( title = "Ошибка!", description = f"Вы не указали аргумент!", color = config.ERR_COLOR )
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send( embed = emb )
 		else:
 			channel = self.client.get_channel(config.ERR_CHANNEL)
 			await ctx.send( embed = discord.Embed( title = "Неизвестная ошибка!", description = f"Произошла неизвестная ошибка: `{err}`\nОшибка уже отправлена разработчику для её исправления", color= config.ERR_COLOR) )
