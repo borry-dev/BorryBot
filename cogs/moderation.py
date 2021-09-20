@@ -40,7 +40,7 @@ class Moderation(commands.Cog):
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 			await ctx.send( embed = emb )
 		else:
-			await member.kick(reason=reason)
+			await member.kick( reason = reason )
 			emb = discord.Embed( title = 'Кик', color = config.MAIN_COLOR )
 			emb.add_field( name = 'Модератор', value = ctx.message.author.mention, inline = False )
 			emb.add_field( name = 'Нарушитель', value = member.mention, inline = False )
