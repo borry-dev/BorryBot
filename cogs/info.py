@@ -218,9 +218,20 @@ class Info(commands.Cog):
 	@commands.command()
 	@commands.guild_only()
 	async def server(self, ctx):
+		if ctx.guild.verification_level == discord.VerificationLevel.none:
+			verification_level = 'Отсутствует'
+		if ctx.guild.verification_level == discord.VerificationLevel.low:
+			verification_level = 'Низкий'
+		if ctx.guild.verification_level == discord.VerificationLevel.medium:
+			verification_level = 'Средний'
+		if ctx.guild.verification_level == discord.VerificationLevel.high:
+			verification_level = 'Высокий'
+		if ctx.guild.verification_level == discord.VerificationLevel.extreme:
+			verification_level = 'Очень выскоий'
 		emb = discord.Embed( title = f'Информация о сервере {ctx.guild.name}', color = config.MAIN_COLOR )
 		emb.add_field( name = 'ID:', value = f'{ctx.guild.id}', inline = False )
 		emb.add_field( name = 'Владелец:', value = f'{ctx.guild.owner}', inline = False )
+		emb.add_field( name = 'Уровень верификации:' , value = verification_level, inline = False )
 		emb.add_field( name = 'Кол-во участников:', value = f'{len(ctx.guild.members)}', inline = False )
 		emb.add_field( name = 'В сети:', value = len({m.id for m in ctx.guild.members if m.status is not discord.Status.offline}), inline = False )
 		emb.add_field( name = 'Каналы:', value = f'{len(ctx.guild.channels)} ({len(ctx.guild.text_channels)} Текстовых | {len(ctx.guild.voice_channels)} Голосовых) ', inline = False )
