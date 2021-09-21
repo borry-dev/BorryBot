@@ -38,13 +38,6 @@ class Admin(commands.Cog):
 			pass
 
 
-	@commands.command()
-	@commands.guild_only()
-	async def eval(self, ctx, *, args):
-		result = eval(args)
-		await ctx.send(result)
-
-
 def setup(client):
 	client.add_cog(Admin(client))
 	print('[Cog] Admin загружен!')
