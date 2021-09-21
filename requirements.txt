@@ -1,6 +1,5 @@
 aiohttp==3.7.4.post0
 discord==1.7.3
-discord-ext-ipc==2.1.1
 discord.py==1.7.3
 psutil==5.8.0
 requests==2.26.0
