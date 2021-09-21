@@ -18,7 +18,6 @@ class Help(commands.Cog):
 			emb.add_field( name = f'{config.PREFIX}help settings', value = 'Настройки сервера', inline = False )
 			emb.add_field( name = f'{config.PREFIX}help support', value = 'Команды поддержки', inline = False )
 			emb.add_field( name = f'{config.PREFIX}help fun', value = 'Развлекательные команды', inline = False )
-			emb.add_field( name = f'{config.PREFIX}help premium', value = 'Премиум команды', inline = False )
 			emb.add_field( name = f'{config.PREFIX}help utility', value = 'Утилиты', inline = False )
 			emb.set_thumbnail( url = self.client.user.avatar_url )
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
@@ -83,15 +82,6 @@ class Help(commands.Cog):
 		emb.add_field( name = f'{config.PREFIX}panda', value = 'Показать фото панды', inline = False )
 		emb.add_field( name = f'{config.PREFIX}eightball', value = 'Волшебный шар', inline = False )
 		emb.add_field( name = f'{config.PREFIX}flip', value = 'Орёл или решка', inline = False )
-		emb.set_thumbnail( url = self.client.user.avatar_url )
-		emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
-		await ctx.send( embed = emb )
-
-
-	@help.command()
-	async def premium(self, ctx):
-		emb = discord.Embed( title = 'Премиум команды', color = config.MAIN_COLOR )
-		emb.add_field( name = f'{config.PREFIX}donate', value = 'Оформить премиум подписку', inline = False )
 		emb.set_thumbnail( url = self.client.user.avatar_url )
 		emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 		await ctx.send( embed = emb )
