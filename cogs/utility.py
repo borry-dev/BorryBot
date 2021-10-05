@@ -37,6 +37,23 @@ class Utility(commands.Cog):
 				await ctx.send( embed = discord.Embed( title = "Ошибка!", description = f"Нельзя использовать текст в примере", color= config.ERR_COLOR ) )
 
 
+	# Avatar
+
+	@commands.command()
+	@commands.guild_only()
+	async def avatar(self, ctx, member:discord.Member=None):
+		if member is None:
+			emb = discord.Embed(title = f'Аватар **{ctx.author.name}**', color = config.MAIN_COLOR)
+			emb.set_image(url = ctx.author.avatar_url)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send(embed=emb)
+		else:
+			emb = discord.Embed(title=f'Аватар **{member.name}**', color=config.MAIN_COLOR)
+			emb.set_image(url=member.avatar_url)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send(embed=emb)
+
+
 	# Spotify
 
 	@commands.command()

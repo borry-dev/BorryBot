@@ -91,6 +91,8 @@ class Help(commands.Cog):
 	async def utility(self, ctx):
 		emb = discord.Embed( title = 'Утилиты', color = config.MAIN_COLOR )
 		emb.add_field( name = f'{config.PREFIX}calc [пример]', value = 'Калькулятор', inline = False )
+		emb.add_field( name = f'{config.PREFIX}avatar <пинг пользователя>', value = 'Просмотр аватара', inline = False)
+		emb.add_field( name = f'{config.PREFIX}spotify <пинг пользователя>', value = 'Информация о треке Spotify', inline = False )
 		emb.set_thumbnail( url = self.client.user.avatar_url )
 		emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 		await ctx.send( embed = emb )

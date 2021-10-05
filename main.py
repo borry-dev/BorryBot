@@ -4,7 +4,7 @@ import os
 
 import config
 
-client = commands.Bot( command_prefix = config.PREFIX )
+client = commands.Bot( command_prefix = config.PREFIX, intents = discord.Intents.all() )
 
 client.remove_command('help')
 
