@@ -19,6 +19,10 @@ class Moderation(commands.Cog):
 			emb = discord.Embed( title = 'Ошибка', description = 'Не указан пользователь!', color = config.ERR_COLOR )
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 			await ctx.send( embed = emb )
+		if member.id == ctx.author.id:
+			emb = discord.Embed(title='Ошибка', description='Нельзя забанить самого себя!', color=config.ERR_COLOR)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send(embed=emb)
 		else:
 			await member.ban( reason = reason )
 			emb = discord.Embed( title = 'Бан', color = config.MAIN_COLOR )
@@ -39,6 +43,10 @@ class Moderation(commands.Cog):
 			emb = discord.Embed( title = 'Ошибка', description = 'Не указан пользователь!', color = config.ERR_COLOR )
 			emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 			await ctx.send( embed = emb )
+		if member.id == ctx.author.id:
+			emb = discord.Embed(title='Ошибка', description='Нельзя кикнуть самого себя!', color=config.ERR_COLOR)
+			emb.set_footer(text=f'{self.client.user.name} | {config.YEAR}', icon_url=self.client.user.avatar_url)
+			await ctx.send(embed=emb)
 		else:
 			await member.kick( reason = reason )
 			emb = discord.Embed( title = 'Кик', color = config.MAIN_COLOR )
