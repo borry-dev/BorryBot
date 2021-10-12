@@ -72,7 +72,7 @@ class Moderation(commands.Cog):
 				emb = discord.Embed( title = 'Ошибка', description = 'За раз можно удалить максимум 50 сообщений', color = config.ERR_COLOR )
 				emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 				await ctx.send( embed = emb )
-			if amount <= 0:
+			elif amount <= 0:
 				emb = discord.Embed( title = 'Ошибка', description = 'Бот не может восстанавливать команды!', color = config.ERR_COLOR )
 				emb.set_footer( text = f'{self.client.user.name} | {config.YEAR}', icon_url = self.client.user.avatar_url )
 				await ctx.send( embed = emb )
