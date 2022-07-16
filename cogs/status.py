@@ -11,7 +11,7 @@ class Status(commands.Cog):
 
 	@commands.Cog.listener()
 	async def on_ready(self):
-		await self.client.change_presence( status = discord.Status.online, activity = discord.Game('-help') )
+		await self.client.change_presence( status = discord.Status.online, activity = discord.Game('b!help') )
 
 
 def setup(client):

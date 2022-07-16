@@ -17,7 +17,7 @@ class SDC(commands.Cog):
         self.sdc.cancel()
 
 
-    @tasks.loop(minutes = 10)
+    @tasks.loop(minutes = 5)
     async def sdc(self):
         try:
             guildscount = str(len(self.bot.guilds))
